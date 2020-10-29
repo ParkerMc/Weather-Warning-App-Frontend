@@ -14,8 +14,16 @@ jobs:
       run: npm install
     - name: Run npm run build-android-linux
       run: npm run build-android-linux
+    - name: Signing apk
+      uses: r0adkll/sign-android-release@v1
+      with:
+        releaseDirectory: android/app/build/outputs/apk/release
+        signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+        alias: ${{ secrets.SIGNING_ALIAS }}
+        keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+  keyPassword: ${{ secrets.KEY_PASSWORD }}
     - name: Upload compiled apk
       uses: actions/upload-artifact@v2
       with:
-        name: Weather_Warning.apk
+        name: Weather_Warning
         path: android/app/build/outputs/apk/release/app-release-unsigned.apk
