@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "android": "ionic capacitor add android"
+    "android": "npm run build && npx cap copy android && npx cap open android"
   },
   "eslintConfig": {
     "extends": [
