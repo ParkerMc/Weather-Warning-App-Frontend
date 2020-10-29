@@ -17,7 +17,7 @@ jobs:
         env: 
           SIGNING_KEY: "${{ secrets.SIGNING_KEY }}"
         name: "Decode signing keystore"
-        run: "echo \"$SIGNING_KEY\" | base64 -d > android\\app\\signing_key.jks"
+        run: "echo \"$SIGNING_KEY\" | base64 -d > android/app/signing_key.jks"
       - 
         name: "Run npm run build-android-linux"
         run: "npm run build-android-linux"
