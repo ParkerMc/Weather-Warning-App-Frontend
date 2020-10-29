@@ -29,6 +29,6 @@ jobs:
         uses: actions/upload-artifact@v2
         with: 
           name: Weather_Warning
-          path: android\app\release\app-release.apk
+          path: android/app/build/outputs/apk/release/app-release.apk
 name: "Build APK"
 on: workflow_dispatch
