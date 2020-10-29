@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@capacitor/android": "^2.4.2",
+    "@capacitor/core": "^2.4.2",
+    "@capacitor/ios": "^2.4.2",
+    "@ionic/cli": "^6.12.1",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -17,7 +21,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "android": "npm build&&npx cap copy android&&npx cap open android",
+    "ios": "npm build&&npx cap copy ios&&npx cap open ios"
   },
   "eslintConfig": {
     "extends": [
@@ -36,5 +42,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^2.4.2"
   }
 }
