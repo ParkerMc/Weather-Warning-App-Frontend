@@ -23,7 +23,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "android-prep": "npm run build && npx cap copy android && npx cap update android",
-    "build-android-linux": "npm run android-prep && cd android && ./gradlew assemble",
+    "build-android-linux": "npm run android-prep && cd android && chmod +x gradlew && ./gradlew assemble",
     "build-android-win": "npm run android-prep && cd android && gradlew.bat assemble",
     "android-dev": "npm run android-prep && npx cap open android"
   },
