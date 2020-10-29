@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Weather Warning</string>
+    <string name="title_activity_main">Weather Warning</string>
+    <string name="package_name">utd.group12.weatherwarning.app</string>
+    <string name="custom_url_scheme">utd.group12.weatherwarning.app</string>
+</resources>
