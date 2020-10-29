@@ -1,8 +1,0 @@
-{
-    "appId": "utd.group12.weatherwarning.app",
-    "appName": "Weather Warning",
-    "bundledWebRuntime": false,
-    "npmClient": "npm",
-    "webDir": "build",
-    "cordova": {}
-}

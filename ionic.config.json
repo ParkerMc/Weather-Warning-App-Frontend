@@ -1,7 +1,0 @@
-{
-    "name": "Weather Warning",
-    "integrations": {
-        "capacitor": {}
-    },
-    "type": "react"
-}
