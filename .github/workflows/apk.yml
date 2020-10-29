@@ -28,4 +28,4 @@ jobs:
           name: Weather_Warning
           path: android\app\release\app-release.apk
 name: "Build APK"
-true: workflow_dispatch
+on: workflow_dispatch 
