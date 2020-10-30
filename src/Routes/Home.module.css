@@ -9,6 +9,8 @@
 
 .GoogleButton {
   align-self: center;
+  height: 55px;
+  width: 290px;
 }
 
 .BottomSpacer {
@@ -25,7 +27,7 @@
 }
 
 .LoginButton, .CreateButton {
-  flex: 0 0 133px;
+  flex: 0 0 130px;
   height: 45px;
   
   font-family: Montserrat;

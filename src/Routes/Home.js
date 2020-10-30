@@ -1,13 +1,13 @@
 import styles from "./Home.module.css"
-import GoogleButton from "react-google-button"
+import GoogleLoginButton from "../Components/GoogleLoginButton"
 import { Component } from "react"
 
 export default class Home extends Component {
-  toCurrentPage(){
+  toCurrentPage() {
     this.props.history.push("/current")
   }
 
-  render(){
+  render() {
     return (
       <main>
         <header className={styles.Top}>
@@ -15,16 +15,17 @@ export default class Home extends Component {
         </header>
         <div className={styles.Bottom}>
           <div className={styles.BottomSpacer}></div>
-          <GoogleButton
+          <GoogleLoginButton
+            dark
             className={styles.GoogleButton}
-            onClick={ this.toCurrentPage.bind(this) }
+            onClick={this.toCurrentPage.bind(this)}
           />
-          <div className={styles.BottomMidSpacer}></div>
+          < div className={styles.BottomMidSpacer}></div>
           <div className={styles.SubBottom}>
             <div className={styles.BottomButtonSpacer}></div>
-            <button type="button" className={styles.LoginButton} onClick={ this.toCurrentPage.bind(this) }>LOG IN</button>
+            <button type="button" className={styles.LoginButton} onClick={this.toCurrentPage.bind(this)}>LOG IN</button>
             <div className={styles.BottomMidButtonSpacer}></div>
-            <button type="button" className={styles.CreateButton} onClick={ this.toCurrentPage.bind(this) }>CREATE</button>
+            <button type="button" className={styles.CreateButton} onClick={this.toCurrentPage.bind(this)}>CREATE</button>
             <div className={styles.BottomButtonSpacer}></div>
           </div>
           <div className={styles.BottomSpacer}></div>
