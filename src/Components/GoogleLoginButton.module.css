@@ -47,7 +47,6 @@
 
 .Icon {
     height: calc(100% - 2px);
-    margin-top: 1px;
     margin-left: 1px;
     float: left;
     background-color: #fff;
