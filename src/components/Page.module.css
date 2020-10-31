@@ -1,0 +1,15 @@
+.MainLight,
+.MainDark {
+    height: 100%;
+     
+    display: flex;
+    flex-direction: column;
+}
+
+.MainLight {
+    background-color: #FFFEF9;
+}
+
+.MainDark {
+    background-color: #272727;
+}

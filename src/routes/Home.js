@@ -1,5 +1,7 @@
 import styles from "./Home.module.css"
 import GoogleLoginButton from "../components/GoogleLoginButton"
+import Page from "../components/Page"
+import Button from "../components/Button"
 import { Component } from "react"
 
 export default class Home extends Component {
@@ -9,7 +11,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <main>
+      <Page>
         <header className={styles.Top}>
           <h1>Let’s Get<br />Started</h1>
         </header>
@@ -20,17 +22,17 @@ export default class Home extends Component {
             className={styles.GoogleButton}
             onClick={this.toCurrentPage.bind(this)}
           />
-          < div className={styles.BottomMidSpacer}></div>
+          <div className={styles.BottomMidSpacer}></div>
           <div className={styles.SubBottom}>
             <div className={styles.BottomButtonSpacer}></div>
-            <button type="button" className={styles.LoginButton} onClick={this.toCurrentPage.bind(this)}>LOG IN</button>
+            <Button onClick={this.toCurrentPage.bind(this)}>LOG IN</Button>
             <div className={styles.BottomMidButtonSpacer}></div>
-            <button type="button" className={styles.CreateButton} onClick={this.toCurrentPage.bind(this)}>CREATE</button>
+            <Button onClick={this.toCurrentPage.bind(this)}>CREATE</Button>
             <div className={styles.BottomButtonSpacer}></div>
           </div>
           <div className={styles.BottomSpacer}></div>
         </div >
-      </main >
-    );
+      </Page>
+    )
   }
 }
