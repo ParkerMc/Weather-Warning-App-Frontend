@@ -1,3 +1,8 @@
+.Page{
+  display: flex;
+  flex-direction: column;
+}
+
 .Top, .Bottom {
   flex: 1 1;
 }
@@ -22,8 +27,8 @@
 }
 
 .SubBottom {
-  display: flex;
   flex: 1 1 0px;
+  display: flex;
 }
 
 .BottomButtonSpacer {

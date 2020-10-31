@@ -11,7 +11,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <Page>
+      <Page className={styles.Page}>
         <header className={styles.Top}>
           <h1>Let’s Get<br />Started</h1>
         </header>
@@ -25,9 +25,9 @@ export default class Home extends Component {
           <div className={styles.BottomMidSpacer}></div>
           <div className={styles.SubBottom}>
             <div className={styles.BottomButtonSpacer}></div>
-            <Button onClick={this.toCurrentPage.bind(this)}>LOG IN</Button>
+            <Button onClick={this.toCurrentPage.bind(this)}>Log In</Button>
             <div className={styles.BottomMidButtonSpacer}></div>
-            <Button onClick={this.toCurrentPage.bind(this)}>CREATE</Button>
+            <Button onClick={this.toCurrentPage.bind(this)}>Create</Button>
             <div className={styles.BottomButtonSpacer}></div>
           </div>
           <div className={styles.BottomSpacer}></div>
