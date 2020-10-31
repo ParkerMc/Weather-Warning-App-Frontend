@@ -4,7 +4,6 @@ import styles from "./GoogleLoginButton.module.css"
 
 export default class GoogleLoginButton extends Component {
     static propTypes = {
-        label: PropTypes.string,
         disabled: PropTypes.bool,
         dark: PropTypes.bool,
         onClick: PropTypes.func,
@@ -19,11 +18,15 @@ export default class GoogleLoginButton extends Component {
     }
 
     render() {
-        const { style, label, dark, className, disabled } = this.props;
+        const { children, className, dark, disabled, style } = this.props;
+        let label = (children !== undefined) ? children : "Sign in with Google"
+        let buttonClass = (disabled) ? styles.DisabledButton :
+            ((dark) ? styles.DarkButton : styles.LightButton)
+
         return (<div role="button" style={style} onClick={this.onClick.bind(this)}
-            className={`${(disabled) ? styles.DisabledButton : ((dark) ? styles.DarkButton : styles.LightButton)} ${className}`} >
+            className={`${buttonClass} ${className}`} >
             <img className={styles.Icon} alt="Google Logo"></img>
-            <span className={styles.Label}>{(label !== undefined) ? label : "Sign in with Google"}</span>
+            <span className={styles.Label}>{label}</span>
         </div>)
     }
 }
