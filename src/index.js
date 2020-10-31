@@ -3,7 +3,7 @@ import ReactDOM from "react-dom"
 import Routes from "./routes"
 import reportWebVitals from "./reportWebVitals"
 import "./index.css"
-import "./fonts/fonts.css"
+import "./fonts"
 
 ReactDOM.render(
   <React.StrictMode>
