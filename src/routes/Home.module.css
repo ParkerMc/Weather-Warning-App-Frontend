@@ -1,0 +1,53 @@
+.Top, .Bottom {
+  flex: 1 1;
+}
+
+.Bottom{
+  display: flex;
+  flex-direction: column;
+}
+
+.GoogleButton {
+  align-self: center;
+  height: 55px;
+  width: 290px;
+}
+
+.BottomSpacer {
+  flex: 1 1 0px;
+}
+
+.BottomMidSpacer {
+  flex: 0 0 40px;
+}
+
+.SubBottom {
+  display: flex;
+  flex: 1 1 0px;
+}
+
+.LoginButton, .CreateButton {
+  flex: 0 0 130px;
+  height: 45px;
+  
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+
+  /* White */
+  color: #FFFEF9;
+  background: #095F6B;
+  border-radius: 6px;
+  border: none;
+}
+
+.BottomButtonSpacer {
+  flex: 1 1 0px;
+}
+
+.BottomMidButtonSpacer {
+  flex: 0 0 30px;
+}
