@@ -1,0 +1,20 @@
+.ToggleButton{
+    width: 130px;
+    height: 45px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+
+    /* White */
+    color: #FFFEF9;
+    background: #BBBBBB;
+    border-radius: 6px;
+    border: none;
+}
+
+.ToggleButton.active{
+    background: #095F6B;
+}
