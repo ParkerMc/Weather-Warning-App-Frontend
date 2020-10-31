@@ -1,5 +1,5 @@
 import styles from "./Home.module.css"
-import GoogleLoginButton from "../Components/GoogleLoginButton"
+import GoogleLoginButton from "../components/GoogleLoginButton"
 import { Component } from "react"
 
 export default class Home extends Component {

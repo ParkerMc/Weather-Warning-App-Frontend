@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import Routes from "./Routes"
+import Routes from "./routes"
 import reportWebVitals from "./reportWebVitals"
 import "./index.css"
 import "./fonts/fonts.css"

@@ -54,22 +54,22 @@
   }
 
 .LightButton .Icon{
-    content: url(../img/GoogleButton/btn_light_normal.svg);
+    content: url(../img/google_button/btn_light_normal.svg);
 }
 
 .LightButton:focus .Icon{
-    content: url(../img/GoogleButton/btn_light_pressed.svg);
+    content: url(../img/google_button/btn_light_pressed.svg);
 }
 
 .DarkButton .Icon{
-    content: url(../img/GoogleButton/btn_light_normal.svg);
+    content: url(../img/google_button/btn_light_normal.svg);
 }
 
 .DarkButton:focus .Icon{
-    content: url(../img/GoogleButton/btn_light_pressed.svg);
+    content: url(../img/google_button/btn_light_pressed.svg);
 }
 
 .DisabledButton .Icon{
-    content: url(../img/GoogleButton/btn_disabled.svg);
+    content: url(../img/google_button/btn_disabled.svg);
     background-color: transparent;
   }
