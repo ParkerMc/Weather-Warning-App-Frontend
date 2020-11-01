@@ -4,14 +4,16 @@ import { connect } from "react-redux"
 import Button from "../components/Button"
 import Page from "../components/Page"
 
-import { getStationData } from "../redux/actions/weather_stations"
+import { getStationObservations, getForecast } from "../redux/actions/weather"
 
 import styles from "./Current.module.css"
 
 function mapStateToProps(store, ownProps) {
   return {
     dark_mode: store.settings.dark_mode,
-    current_station: store.weather_stations.current_station
+    current_station: store.weather.current_station,
+    current_forecast: store.weather.current_forecast,
+    station_loading: store.weather.loading
   }
 }
 
@@ -20,7 +22,8 @@ class Current extends Component {
     // TODO also update if data is old
     const { current_station } = this.props
     if (Object.entries(current_station).length === 0) {
-      this.props.dispatch(getStationData("someID")) // TODO replace with current station ID
+      this.props.dispatch(getStationObservations("KDFW")) // TODO replace with current station ID and zone ID
+      this.props.dispatch(getForecast("FWD", 79, 108)) // TODO get gridpoint https://api.weather.gov/points/{lat},{lon}
     }
   }
 
@@ -45,18 +48,18 @@ class Current extends Component {
   }
 
   render() {
-    const { dark_mode, current_station } = this.props
-    return (
+    const { dark_mode, current_station, station_loading, current_forecast } = this.props
+    return (  // TODO convert data
       <Page className={styles.Page} dark={dark_mode}>
         <h2 className={styles.Headder}>Current Weather</h2>
-        <p className={styles.LocationText}>Location: {this.propOrDefault(current_station.location, "Loading")}</p>
-        <p className={styles.DarkGrayText}>Current Temp: {this.propOrDefault(current_station.temperature, 0)} &deg;F</p>
-        <p className={styles.TealText}>Highest Temp: {this.propOrDefault(current_station.high, 0)} &deg;F</p>
-        <p className={styles.TealText}>Lowest Temp: {this.propOrDefault(current_station.low, 0)} &deg;F</p>
-        <p className={styles.DarkGrayText}>Pressure: {this.propOrDefault(current_station.pressure, 0)} Hg</p>
+        <p className={styles.LocationText}>Location: {(station_loading) ? "Loading" : this.propOrDefault(current_station.location, "")}</p>
+        <p className={styles.DarkGrayText}>Current Temp: {this.propOrDefault(current_station.temperature, 0)} &deg;C</p>
+        <p className={styles.TealText}>Highest Temp: {this.propOrDefault(current_station.high, 0)} &deg;C</p>
+        <p className={styles.TealText}>Lowest Temp: {this.propOrDefault(current_station.low, 0)} &deg;C</p>
+        <p className={styles.DarkGrayText}>Pressure: {this.propOrDefault(current_station.pressure, 0)} Pa</p>
         <p className={styles.DarkGrayText}>Humidity: {this.propOrDefault(current_station.humidity, 0)}%</p>
-        <p className={styles.TealText}>Wind Speed: {this.propOrDefault(current_station.wind_speed, 0)} mph</p>
-        <p className={styles.DarkGrayText}>Chance of Rain: {this.propOrDefault(current_station.rain_chance, 0)}%</p>
+        <p className={styles.TealText}>Wind Speed: {this.propOrDefault(current_station.wind_speed, 0)} km/h</p>
+        <p className={styles.DarkGrayText}>Chance of Rain: {this.propOrDefault(current_forecast.rain_chance, 0)}%</p>
         <div className={styles.ButtonBox}>
           <Button onClick={this.onProfileClick.bind(this)}>Profile</Button>
           <Button onClick={this.onNotificationsClick.bind(this)}>Notifications</Button>

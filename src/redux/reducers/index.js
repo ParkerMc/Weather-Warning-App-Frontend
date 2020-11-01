@@ -1,9 +1,9 @@
 import { combineReducers } from "redux"
 
 import settings from "./settings"
-import weather_stations from "./weather_stations"
+import weather from "./weather"
 
 export default combineReducers({
     settings,
-    weather_stations
+    weather
 })

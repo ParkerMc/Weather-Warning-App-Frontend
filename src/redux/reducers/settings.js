@@ -5,6 +5,6 @@ let initial_state = {
 }
 
 export default function reducer(state = initial_state, action) {
-    console.log(action)
+    //console.log(action)
     return state
 }
