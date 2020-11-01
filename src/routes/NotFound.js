@@ -1,14 +1,26 @@
 import { Component } from "react"
+import { connect } from "react-redux"
+
+import Page from "../components/Page"
+
 import styles from "./NotFound.module.css"
 
+function mapStateToProps(store, ownProps) {
+  return {
+    dark_mode: store.settings.dark_mode
+  }
+}
 
-export default class NotFound extends Component{
+class NotFound extends Component {
   render() {
+    const { dark_mode } = this.props
     return (
-      <main className={styles.Main}>
-        <h2>Error: 404<br/>
+      <Page className={styles.Main} dark={dark_mode}>
+        <h2>Error: 404<br />
         Page Not Found</h2>
-      </main >
+      </Page>
     )
   }
 }
+
+export default connect(mapStateToProps)(NotFound)

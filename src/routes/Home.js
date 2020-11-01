@@ -1,17 +1,26 @@
+import { Component } from "react"
+import { connect } from "react-redux"
+
 import styles from "./Home.module.css"
 import GoogleLoginButton from "../components/GoogleLoginButton"
 import Page from "../components/Page"
 import Button from "../components/Button"
-import { Component } from "react"
 
-export default class Home extends Component {
+function mapStateToProps(store, ownProps) {
+  return {
+    dark_mode: store.settings.dark_mode
+  }
+}
+
+class Home extends Component {
   toCurrentPage() {
     this.props.history.push("/current")
   }
 
   render() {
+    const { dark_mode } = this.props
     return (
-      <Page className={styles.Page}>
+      <Page className={styles.Page} dark={dark_mode}>
         <header className={styles.Top}>
           <h1>Let’s Get<br />Started</h1>
         </header>
@@ -36,3 +45,5 @@ export default class Home extends Component {
     )
   }
 }
+
+export default connect(mapStateToProps)(Home)
