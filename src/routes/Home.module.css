@@ -38,3 +38,7 @@
 .BottomMidButtonSpacer {
   flex: 0 0 30px;
 }
+
+.BottomButton{
+  width: 130px;
+}

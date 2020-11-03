@@ -1,0 +1,99 @@
+.Page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.Headder{
+    margin: 0 20px 10px 20px;
+}
+
+.Row,
+.NotificationRow
+{
+    display: flex;
+    margin: 10px 20px 10px 20px;
+}
+
+.Row{
+    flex-direction: row;
+}
+
+.SettingLabel{
+    flex: 1 1 0px;
+    margin: 0 0 5px 0;
+
+    /* Big Text */
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 36px;
+
+    /* Black */
+    color: #272727;
+}
+
+.Dark .SettingLabel{
+    /* White */
+    color: #FFFEF9;
+}
+
+
+.SettingMultiLabel {
+    display: flex;
+    flex-direction: column;
+}
+
+.SettingDescription{
+    margin: 0 0 0 10px;
+    padding-left: 5px;
+
+    border: 2px solid #095F6B;
+    border-top: 0;
+    border-bottom: 0;
+    border-right: 0;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    color: #727272;
+}
+
+.Dark .SettingDescription{
+    color: #BBBBBB;
+}
+
+.NotificationRow{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.NotificationSpacer{
+    flex: 0 0 20px;
+}
+
+.NotificationButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Delta{
+    font-weight: 700;
+    color: #095F6B;
+}
+
+.BackButton{
+    margin: 0 0 5px 5px;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-right: 25px solid #727272;
+    border-bottom: 15px solid transparent;
+}
+
+.Dark .BackButton{
+    border-right-color: #FFFFFF;
+}

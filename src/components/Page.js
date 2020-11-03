@@ -12,6 +12,6 @@ export default class Page extends Component {
     render() {
         const { className, dark, style } = this.props
         let mainClass = (dark) ? styles.MainDark : styles.MainLight;
-        return (<main className={`${mainClass} ${className}`} style={style}>{this.props.children}</main>)
+        return (<main className={`${mainClass} ${className}`} style={style} > { this.props.children}</main >)
     }
 }

@@ -1,6 +1,7 @@
 .Button{
-    width: 130px;
+    width: 115px;
     height: 45px;
+    flex: 0 0 115px;
     font-family: Montserrat;
     font-style: normal;
     font-weight: 500;
@@ -13,4 +14,9 @@
     background: #095F6B;
     border-radius: 6px;
     border: none;
+}
+
+.Dark{
+    /* Black */
+    color: #272727;
 }

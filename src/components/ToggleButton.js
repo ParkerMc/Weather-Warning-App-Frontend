@@ -5,6 +5,7 @@ import styles from "./ToggleButton.module.css"
 export default class ToggleButton extends Component {
     static propTypes = {
         className: PropTypes.string,
+        dark: PropTypes.bool,
         style: PropTypes.object,
         active: PropTypes.bool,
         onToggle: PropTypes.func
@@ -27,9 +28,9 @@ export default class ToggleButton extends Component {
     }
 
     render() {
-        const { children, className, style } = this.props
+        const { children, className, dark, style } = this.props
         const { active } = this.state
-        let realChildren = (children !== undefined) ? children : "TOGGLE"
-        return (<button type="button" style={style} className={`${styles.ToggleButton} ${(active) && styles.active} ${className} `} onClick={this.toggleButton.bind(this)}>{realChildren}</button>)
+        let realChildren = (children !== undefined) ? children : (active) ? "ON" : "OFF"
+        return (<button type="button" style={style} className={`${styles.ToggleButton} ${dark && styles.Dark} ${(active) && styles.active} ${className} `} onClick={this.toggleButton.bind(this)}>{realChildren}</button>)
     }
 }

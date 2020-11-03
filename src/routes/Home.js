@@ -34,9 +34,9 @@ class Home extends Component {
           <div className={styles.BottomMidSpacer}></div>
           <div className={styles.SubBottom}>
             <div className={styles.BottomButtonSpacer}></div>
-            <Button onClick={this.toCurrentPage.bind(this)}>Log In</Button>
+            <Button className={styles.BottomButton} onClick={this.toCurrentPage.bind(this)}>Log In</Button>
             <div className={styles.BottomMidButtonSpacer}></div>
-            <Button onClick={this.toCurrentPage.bind(this)}>Create</Button>
+            <Button className={styles.BottomButton} onClick={this.toCurrentPage.bind(this)}>Create</Button>
             <div className={styles.BottomButtonSpacer}></div>
           </div>
           <div className={styles.BottomSpacer}></div>
