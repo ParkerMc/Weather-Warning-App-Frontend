@@ -1,3 +1,8 @@
+.MainLight,
+.MainDark {
+    flex: 1 1 0px;
+}
+
 .MainLight {
     background-color: #FFFEF9;
 }
