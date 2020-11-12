@@ -70,10 +70,6 @@
     
 }
 
-.NotificationSpacer{
-    flex: 0 0 20px;
-}
-
 .NotificationButtons{
     display: flex;
     flex-direction: row;
@@ -87,11 +83,13 @@
 
 .BackButton{
     margin: 0 0 5px 5px;
+    bottom:0px;
+    right:0px;
     width: 0;
     height: 0;
-    border-top: 15px solid transparent;
+    border-top: 14px solid transparent;
     border-right: 25px solid #727272;
-    border-bottom: 15px solid transparent;
+    border-bottom: 14px solid transparent;
 }
 
 .Dark .BackButton{

@@ -1,0 +1,60 @@
+.ScrollButton{
+    width: 115px;
+    height: 45px;
+    flex: 0 0 115px;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+    display: flex;
+    align-items: stretch;
+
+
+    /* White */
+    color: #FFFEF9;
+    background: #BBBBBB;
+    border-radius: 6px;
+    border: none;
+}
+
+.ScrollButton.active{
+    background: #095F6B;
+}
+
+.Dark{
+    /* Black */
+    color: #272727;
+}
+.Text{
+    flex: 1 1 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.BackButton,
+.ForwardButton{
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+
+.BackButton{
+    margin: auto 2px auto 8px;
+    border-right: 12px solid #FFFEF9;
+}
+.ForwardButton{
+    margin: auto 8px auto 2px;
+    border-left: 12px solid#FFFEF9;
+}
+
+.Dark .BackButton{
+    border-right-color: #272727;
+}
+
+.Dark .ForwardButton{
+    border-left-color: #272727;
+}
