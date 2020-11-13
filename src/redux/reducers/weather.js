@@ -56,7 +56,7 @@ export default function reducer(state = initial_state, action) {
                     temperature: station_data.temperature.value,
                     low: station_data.minTemperatureLast24Hours.value, // TODO low and high seem to be missing
                     high: station_data.maxTemperatureLast24Hours.value,
-                    humidity: station_data.relativeHumidity.value,
+                    humidity: station_data.relativeHumidity.value.toFixed(2),
                     wind_speed: station_data.windSpeed.value,
                 }
             }
