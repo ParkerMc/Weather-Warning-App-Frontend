@@ -3,11 +3,19 @@
   flex-direction: column;
 }
 
-.Top, .Bottom {
-  flex: 1 1;
+.Header{
+  margin-bottom: 0;
 }
 
 .Bottom{
+  flex: 1 1 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.SubBottom {
   display: flex;
   flex-direction: column;
 }
@@ -18,21 +26,24 @@
   width: 290px;
 }
 
-.BottomSpacer {
-  flex: 1 1 0px;
+.Label {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 25px;
+  align-self: center;
+
+  /* Black */
+  color: #272727;
 }
 
-.BottomMidSpacer {
-  flex: 0 0 40px;
+.Label p{
+  margin: 10px 0 0 0;
 }
 
-.SubBottom {
-  flex: 1 1 0px;
+.SubSubBottom {
   display: flex;
-}
-
-.BottomButtonSpacer {
-  flex: 1 1 0px;
+  justify-content: center;
 }
 
 .BottomMidButtonSpacer {
@@ -41,4 +52,7 @@
 
 .BottomButton{
   width: 130px;
+  flex: 0 0 130px;
+
+  margin: 20px 0 15px 0;
 }
