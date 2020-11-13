@@ -16,7 +16,7 @@ let initial_state = {
     windspeed_change: 10,
     rain_enabled: false,
     rain_change: 30,
-    dark_mode: false,
+    dark_mode: false,   // TODO first get from system before login
     error: null
 }
 

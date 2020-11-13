@@ -52,7 +52,7 @@ class Current extends Component {
     return (  // TODO convert data
       <Page className={styles.Page} dark={dark_mode}>
         <h2 className={styles.Headder}>Current Weather</h2>
-        <p className={styles.LocationText}>Location: {(station_loading) ? "Loading" : this.propOrDefault(current_station.location, "")}</p>
+        <p className={styles.LocationText}>Location: <br />{(station_loading) ? "Loading" : this.propOrDefault(current_station.location, "DFW Airpot")/* TODO remove DFW part later */}</p>
         <p className={styles.DarkGrayText}>Current Temp: {this.propOrDefault(current_station.temperature, 0)} &deg;C</p>
         <p className={styles.TealText}>Highest Temp: {this.propOrDefault(current_station.high, 0)} &deg;C</p>
         <p className={styles.TealText}>Lowest Temp: {this.propOrDefault(current_station.low, 0)} &deg;C</p>
