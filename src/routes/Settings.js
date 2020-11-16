@@ -1,7 +1,9 @@
 import { Component } from "react"
 import { connect } from "react-redux"
+import { Redirect } from "react-router-dom"
 
 import { changeSettings } from "../redux/actions/settings"
+import { loadCookies } from "../redux/actions/user"
 
 import ToggleButton from "../components/ToggleButton"
 import ScrollButton from "../components/ScrollButton"
@@ -28,6 +30,10 @@ function mapStateToProps(store, ownProps) {
     rain_enabled: store.settings.rain_enabled,
     rain_change: store.settings.rain_change,
     dark_mode: store.settings.dark_mode,
+
+    loggedin: store.user.loggedin,
+    loggedin_check: store.user.loggedin_check,
+    loggedin_loading: store.user.loggedin_loading
   }
 }
 
@@ -39,6 +45,10 @@ class Settings extends Component {
   }
   componentDidMount() {
     // TODO get settings
+    const { loggedin_check, loggedin_loading } = this.props
+    if (!loggedin_check && !loggedin_loading) {
+      this.props.dispatch(loadCookies())
+    }
   }
 
   onDarkModeToggle(val) {
@@ -124,10 +134,12 @@ class Settings extends Component {
   render() {
     const { use_gps, locations_enabled, time_interval, push_enabled, warnings_enabled, email_enabled,
       temperature_enabled, temperature_change, pressure_enabled, pressure_change, humidity_enabled, humidity_change,
-      wind_enabled, windspeed_change, rain_enabled, rain_change, dark_mode } = this.props
+      wind_enabled, windspeed_change, rain_enabled, rain_change, dark_mode,
+      loggedin, loggedin_loading, loggedin_check } = this.props
     const { currentLocation } = this.state
     return (
       <Page className={`${styles.Page} ${dark_mode && styles.Dark}`} dark={dark_mode}>
+        {!loggedin && !loggedin_loading && loggedin_check && <Redirect to="/" />}  {/* Redirects user if they are not logged in */}
         <h2 className={styles.Headder}>Settings</h2>
         <div className={styles.Row}>
           <p className={styles.SettingLabel}>Use GPS</p>

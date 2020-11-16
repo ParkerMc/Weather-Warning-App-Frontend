@@ -1,4 +1,4 @@
-export function changeSettings(obj) { // TODO do right
+export function changeSettings(obj) {
     return {
         type: "SETTINGS_CHANGE",
         payload: obj

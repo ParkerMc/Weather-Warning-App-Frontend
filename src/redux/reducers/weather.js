@@ -3,7 +3,7 @@ let initial_state = {
     current_station: {},
     current_forecast: {},
     loading: false,
-    error: null
+    error: undefined
 }
 
 // TODO set human readable location 

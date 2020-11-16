@@ -17,7 +17,7 @@ let initial_state = {
     rain_enabled: false,
     rain_change: 30,
     dark_mode: false,   // TODO first get from system before login
-    error: null
+    error: undefined
 }
 
 export default function reducer(state = initial_state, action) {

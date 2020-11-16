@@ -15,6 +15,26 @@
 
 }
 
+.ErrorBox{
+  display: flex;
+  align-self: center;
+  width: 280px;
+  padding: 10px 0 10px 0;
+  background-color: #f44336;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
+  align-self: center;
+
+  /* Black */
+  color: #171717;
+}
+
 .SubBottom {
   display: flex;
   flex-direction: column;

@@ -14,6 +14,7 @@
     "cordova-plugin-device": "github:apache/cordova-plugin-device",
     "cordova-plugin-network-information": "github:apache/cordova-plugin-network-information",
     "phonegap-plugin-mobile-accessibility": "^1.0.5",
+    "qs": "^6.5.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.2",
@@ -21,6 +22,7 @@
     "react-scripts": "4.0.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "universal-cookie": "^4.0.4",
     "web-vitals": "^0.2.4"
   },
   "scripts": {

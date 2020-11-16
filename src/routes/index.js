@@ -9,6 +9,7 @@ import { } from "react-router-dom"
 import Current from "./Current"
 import Home from "./Home"
 import NotFound from "./NotFound"
+import GoogleCallback from "./GoogleCallback"
 import Settings from "./Settings"
 
 export default class Router extends Component {
@@ -18,6 +19,7 @@ export default class Router extends Component {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route path="/current" component={Current} />
+                    <Route path="/google_callback" component={GoogleCallback} />
                     <Route path="/settings" component={Settings} />
                     <Route path="*" component={NotFound} />
                 </Switch>
