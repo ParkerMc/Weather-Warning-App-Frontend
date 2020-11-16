@@ -32,6 +32,7 @@ class GoogleCallback extends Component {
   componentDidMount() {
     let GET_data = this.parseURLParams(this.props.location.search)
     if (!GET_data.code) {
+      this.props.history.replace("/")
       return
     }
     this.props.dispatch(processGoogleLogin(GET_data.code))

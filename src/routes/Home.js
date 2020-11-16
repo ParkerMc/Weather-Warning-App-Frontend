@@ -98,7 +98,7 @@ class Home extends Component {
   }
 
   onGoogleLoginClick() {
-    this.props.dispatch(redirectToGoogleLogin())
+    this.props.dispatch(redirectToGoogleLogin())  // TODO handle locally on app
   }
 
   componentDidUpdate() {
