@@ -90,6 +90,8 @@ class Home extends Component {
       this.setState({ error: "Invalid username" })
     } else if (email.match(VALID_EMAIL_REGEX) == null) {
       this.setState({ error: "Invalid email" })
+    } else if (password.length < 5) {
+      this.setState({ error: "Password must be atleast 6 charcters long" })
     } else if (password !== confirm_password) {
       this.setState({ error: "Passwords do not match" })
     } else {
