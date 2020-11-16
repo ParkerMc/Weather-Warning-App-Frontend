@@ -21,7 +21,7 @@ const dispatchMiddleware = store => next => action => {
 
 const middleware = applyMiddleware(thunk, dispatchMiddleware)
 
-export default createStore(reducer, middleware)
+export default createStore(reducer, middleware) // TODO make store persistent w/ redux-persist & redux-persist-capacitor-storage
 
 
 

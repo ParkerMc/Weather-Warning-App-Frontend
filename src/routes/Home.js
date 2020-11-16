@@ -1,6 +1,7 @@
 import { Component } from "react"
 import { connect } from "react-redux"
 import { Redirect } from "react-router-dom"
+import { Capacitor } from '@capacitor/core';
 
 import styles from "./Home.module.css"
 import GoogleLoginButton from "../components/GoogleLoginButton"
@@ -98,7 +99,15 @@ class Home extends Component {
   }
 
   onGoogleLoginClick() {
-    this.props.dispatch(redirectToGoogleLogin())  // TODO handle locally on app
+    switch (Capacitor.getPlatform()) {
+      case "android":
+      case "ios":
+        alert("Not implemented")// TODO handle locally on app
+        break
+      case "web":
+      default:
+        this.props.dispatch(redirectToGoogleLogin())
+    }
   }
 
   componentDidUpdate() {
