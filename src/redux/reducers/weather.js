@@ -10,6 +10,8 @@ let initial_state = {
 
 export default function reducer(state = initial_state, action) {
     switch (action.type) {
+        case "LOGOUT":
+            return { ...initial_state }
         // TODO support storing multiple stations and forcasts
         case "FORECAST_PENDING":
             return {

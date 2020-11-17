@@ -1,4 +1,5 @@
 import { applyMiddleware, createStore } from "redux"
+import { persistStore } from "redux-persist"
 
 import thunk from "redux-thunk"
 
@@ -21,8 +22,8 @@ const dispatchMiddleware = store => next => action => {
 
 const middleware = applyMiddleware(thunk, dispatchMiddleware)
 
-export default createStore(reducer, middleware) // TODO make store persistent w/ redux-persist & redux-persist-capacitor-storage
-
+export const store = createStore(reducer, middleware)
+export const persistor = persistStore(store)
 
 
 

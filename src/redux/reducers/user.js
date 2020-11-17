@@ -26,6 +26,8 @@ let initial_state = {
 
 export default function reducer(state = initial_state, action) {
     switch (action.type) {
+        case "LOGOUT":
+            return { ...initial_state }
         case "INFO_FULFILLED":
             if (state.redirect_google) {
                 action.dispatch(redirectToGoogleLogin())
@@ -66,6 +68,7 @@ export default function reducer(state = initial_state, action) {
             if (!action.payload.loggedin) {
                 cookies.remove("username");
                 cookies.remove("token");
+                action.dispatch({ type: "LOGOUT" })
             }
             return {
                 ...state,
@@ -104,6 +107,7 @@ export default function reducer(state = initial_state, action) {
         case "LOGOUT_FULFILLED":
             cookies.remove("username");
             cookies.remove("token");
+            action.dispatch({ type: "LOGOUT" })
             return {
                 ...state,
                 loggedin: false,
@@ -127,7 +131,9 @@ export default function reducer(state = initial_state, action) {
                 info_loading: true
             }
         case "USER_INFO_REJECTED":
-            // TODO check login since failed
+            if (action.payload.response.status === 401) {
+                action.dispatch(checkLogin(state.username, state.token))
+            }
             return {
                 ...state,
                 info_loading: true, // TODO maybe change is here now to prevent api overload
@@ -147,14 +153,15 @@ export default function reducer(state = initial_state, action) {
                 info_loading: true
             }
         case "UPDATE_USER_INFO_REJECTED":
-            // TODO check login since failed
+            if (action.payload.response.status === 401) {
+                action.dispatch(checkLogin(state.username, state.token))
+            }
             return {
                 ...state,
                 info_loading: true, // TODO maybe change is here now to prevent api overload
                 error: action.payload
             }
         case "UPDATE_USER_INFO_FULFILLED":
-            // TODO success dialog
             action.dispatch((dispatch) => {
                 setTimeout(() => {
                     dispatch({ type: "HIDE_SHOW_UPDATE_SAVE" })

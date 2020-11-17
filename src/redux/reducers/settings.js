@@ -16,12 +16,14 @@ let initial_state = {
     windspeed_change: 10,
     rain_enabled: false,
     rain_change: 30,
-    dark_mode: false,   // TODO first get from system before login
+    dark_mode: false,
     error: undefined
 }
 
 export default function reducer(state = initial_state, action) {
     switch (action.type) { // TODO save to server
+        case "LOGOUT":
+            return { ...initial_state }
         case "SETTINGS_CHANGE":
             return {
                 ...state,
