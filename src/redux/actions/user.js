@@ -20,6 +20,24 @@ export function checkLogin(username, token) {
     }
 }
 
+export function getUserInfo(username, token) {
+    return (dispatch) => {
+        dispatch({ type: "USER_INFO_PENDING" })
+        axios.get(settings.api_url + "/user", {
+            headers: {
+                "Auth-Username": username,
+                "Auth-Token": token
+            }
+        })
+            .then((responce) => {
+                dispatch({ type: "USER_INFO_FULFILLED", payload: responce.data })
+            })
+            .catch((err) => {
+                dispatch({ type: "USER_INFO_REJECTED", payload: err })
+            })
+    }
+}
+
 export function loadCookies() {
     return { type: "LOAD_COOKIES" }
 }
@@ -33,6 +51,24 @@ export function login(identifier, password) {
             })
             .catch((err) => {
                 dispatch({ type: "LOGIN_REJECTED", payload: err })
+            })
+    }
+}
+
+export function logout(username, token) {
+    return (dispatch) => {
+        dispatch({ type: "LOGOUT_PENDING" })
+        axios.delete(settings.api_url + "/user/logout", {
+            headers: {
+                "Auth-Username": username,
+                "Auth-Token": token
+            }
+        })
+            .then((responce) => {
+                dispatch({ type: "LOGOUT_FULFILLED", payload: responce.data })
+            })
+            .catch((err) => {
+                dispatch({ type: "LOGOUT_REJECTED", payload: err })
             })
     }
 }
@@ -63,6 +99,28 @@ export function signUp(username, email, password) {
             })
             .catch((err) => {
                 dispatch({ type: "LOGIN_REJECTED", payload: err })
+            })
+    }
+}
+
+export function updateUserInfo(username, token, name, email, phoneNumber, password) {
+    let data = { name, email, phoneNumber }
+    if (password !== undefined) {
+        data.password = password
+    }
+    return (dispatch) => {
+        dispatch({ type: "UPDATE_USER_INFO_PENDING" })
+        axios.put(settings.api_url + "/user", qs.stringify(data), {
+            headers: {
+                "Auth-Username": username,
+                "Auth-Token": token
+            }
+        })
+            .then((responce) => {
+                dispatch({ type: "UPDATE_USER_INFO_FULFILLED", payload: responce.data })
+            })
+            .catch((err) => {
+                dispatch({ type: "UPDATE_USER_INFO_REJECTED", payload: err })
             })
     }
 }

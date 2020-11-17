@@ -15,7 +15,13 @@ let initial_state = {
     redirect_google: false,
     token: undefined,
     username: undefined,
-    error: undefined
+    error: undefined,
+    name: undefined,
+    email: undefined,
+    phone_number: undefined,
+    info_loading: false,
+    update_error: undefined,
+    show_update_saved: false
 }
 
 export default function reducer(state = initial_state, action) {
@@ -90,6 +96,20 @@ export default function reducer(state = initial_state, action) {
                 token: action.payload.token,
                 username: action.payload.username
             }
+        case "LOGOUT_REJECTED":
+            return {
+                ...state,
+                error: action.payload
+            }
+        case "LOGOUT_FULFILLED":
+            cookies.remove("username");
+            cookies.remove("token");
+            return {
+                ...state,
+                loggedin: false,
+                token: undefined,
+                username: undefined
+            }
         case "REDIRECT_GOOGLE_LOGIN":
             if (state.google_login_url === undefined) {
                 action.dispatch(getInfo())
@@ -100,6 +120,59 @@ export default function reducer(state = initial_state, action) {
             }
             window.location.href = state.google_login_url
             break
+
+        case "USER_INFO_PENDING":
+            return {
+                ...state,
+                info_loading: true
+            }
+        case "USER_INFO_REJECTED":
+            // TODO check login since failed
+            return {
+                ...state,
+                info_loading: true, // TODO maybe change is here now to prevent api overload
+                error: action.payload
+            }
+        case "USER_INFO_FULFILLED":
+            return {
+                ...state,
+                name: action.payload.name,
+                email: action.payload.email,
+                phone_number: action.payload.phoneNumber,
+                info_loading: false
+            }
+        case "UPDATE_USER_INFO_PENDING":
+            return {
+                ...state,
+                info_loading: true
+            }
+        case "UPDATE_USER_INFO_REJECTED":
+            // TODO check login since failed
+            return {
+                ...state,
+                info_loading: true, // TODO maybe change is here now to prevent api overload
+                error: action.payload
+            }
+        case "UPDATE_USER_INFO_FULFILLED":
+            // TODO success dialog
+            action.dispatch((dispatch) => {
+                setTimeout(() => {
+                    dispatch({ type: "HIDE_SHOW_UPDATE_SAVE" })
+                }, 5000)
+            })
+            return {
+                ...state,
+                name: action.payload.name,
+                email: action.payload.email,
+                phone_number: action.payload.phoneNumber,
+                info_loading: false,
+                show_update_saved: true
+            }
+        case "HIDE_SHOW_UPDATE_SAVE":
+            return {
+                ...state,
+                show_update_saved: false
+            }
         default:
             break
     }

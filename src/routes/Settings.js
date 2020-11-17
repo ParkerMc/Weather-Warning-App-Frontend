@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom"
 import { changeSettings } from "../redux/actions/settings"
 import { loadCookies } from "../redux/actions/user"
 
+import BackButton from "../components/BackButton"
 import ToggleButton from "../components/ToggleButton"
 import ScrollButton from "../components/ScrollButton"
 import Page from "../components/Page"
@@ -202,7 +203,7 @@ class Settings extends Component {
           <p className={styles.SettingLabel}>Dark Mode</p>
           <ToggleButton dark={dark_mode} active={dark_mode} onToggle={this.onDarkModeToggle.bind(this)} />
         </div>
-        <div className={styles.BackButton} onClick={this.onBackButtonClicked.bind(this)}></div>
+        <BackButton dark={dark_mode} onClick={this.onBackButtonClicked.bind(this)} />
       </Page>
     )
   }

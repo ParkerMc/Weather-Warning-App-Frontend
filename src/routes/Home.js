@@ -120,7 +120,7 @@ class Home extends Component {
     }
   }
 
-  render() {
+  render() {  // TODO forgot password
     const { dark_mode, loggedin } = this.props
     const { create_account, error, username, password, email, confirm_password } = this.state
     return (
