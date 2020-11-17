@@ -16,7 +16,7 @@ function mapStateToProps(store, ownProps) {
     dark_mode: store.settings.dark_mode,
     loggedin: store.user.loggedin,
     loggedin_check: store.user.loggedin_check,
-    loggedin_loading: store.user.loggedin_loadingm,
+    loggedin_loading: store.user.loggedin_loading,
     username: store.user.username,
     token: store.user.token,
     name: store.user.name,
@@ -115,7 +115,7 @@ class Profile extends Component {
     const { name, email, phone_number, info_loading, username, token, update_error } = this.props
     const { nameChanged, emailChanged, phoneNumberChanged, lastError } = this.state
     if (!info_loading && (name === undefined || email === undefined || phone_number === undefined) && username !== undefined && token !== undefined) {
-      this.props.dispatch(getUserInfo(username, token))
+      this.props.dispatch(getUserInfo(username, token)) // TODO change to a better way
     }
     if (!nameChanged && name !== undefined && name !== this.state.name) {
       this.setState({ name })

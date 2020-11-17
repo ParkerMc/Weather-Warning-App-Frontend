@@ -1,11 +1,14 @@
 
 let initial_state = {
     loading: false,
+    googleAPIKey: undefined,
     error: undefined
 }
 
 export default function reducer(state = initial_state, action) {
     switch (action.type) {
+        case "LOGOUT":
+            return { ...initial_state }
         case "INFO_PENDING":
             return {
                 ...state,
@@ -20,6 +23,7 @@ export default function reducer(state = initial_state, action) {
         case "INFO_FULFILLED":
             return {
                 ...state,
+                googleAPIKey: action.payload.googleAPIKey,
                 loading: false
             }
         default:
