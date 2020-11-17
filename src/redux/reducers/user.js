@@ -1,7 +1,7 @@
 import Cookies from "universal-cookie";
 
 import { getInfo } from "../actions/info"
-import { checkLogin, redirectToGoogleLogin } from "../actions/user"
+import { checkLogin, processGoogleLogin, redirectToGoogleLogin } from "../actions/user"
 
 const cookies = new Cookies();
 
@@ -51,6 +51,9 @@ export default function reducer(state = initial_state, action) {
                 username,
                 token
             }
+        case "START_GOOGLE_LOGIN":  // Will be sent from android
+            action.dispatch(processGoogleLogin(action.payload))
+            break
         case "LOGGEDIN_PENDING":
             return {
                 ...state,

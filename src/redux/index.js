@@ -1,5 +1,6 @@
 import { applyMiddleware, createStore } from "redux"
 import { persistStore } from "redux-persist"
+import { Plugins } from '@capacitor/core';
 
 import thunk from "redux-thunk"
 
@@ -25,5 +26,9 @@ const middleware = applyMiddleware(thunk, dispatchMiddleware)
 export const store = createStore(reducer, middleware)
 export const persistor = persistStore(store)
 
+const { GoogleLoginPlugin } = Plugins;
+GoogleLoginPlugin.addListener("redux", (data) => {
+    store.dispatch(data)
+})
 
 

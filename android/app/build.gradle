@@ -20,6 +20,13 @@ android {
             // Optional, specify signing versions used
             v1SigningEnabled true
             v2SigningEnabled true
+            /* */
+        }
+        debug {
+            storeFile file('C:\\Users\\ParkerMc\\.android\\debug.keystore')
+            keyAlias 'androiddebugkey'
+            storePassword 'android'
+            keyPassword 'android'
         }
     }
 
@@ -39,6 +46,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
     implementation project(':capacitor-android')

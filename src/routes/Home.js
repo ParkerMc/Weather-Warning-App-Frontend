@@ -1,7 +1,7 @@
 import { Component } from "react"
 import { connect } from "react-redux"
 import { Redirect } from "react-router-dom"
-import { Capacitor } from '@capacitor/core';
+import { Capacitor, Plugins } from '@capacitor/core';
 
 import styles from "./Home.module.css"
 import GoogleLoginButton from "../components/GoogleLoginButton"
@@ -11,6 +11,8 @@ import TextInput from "../components/TextInput"
 
 import { getInfo } from "../redux/actions/info"
 import { loadCookies, login, redirectToGoogleLogin, signUp } from "../redux/actions/user"
+
+const { GoogleLoginPlugin } = Plugins;
 
 const VALID_EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
 const VALID_USERNAME_REGEX = /^[a-zA-Z0-9]+$/
@@ -102,9 +104,11 @@ class Home extends Component {
 
   onGoogleLoginClick() {
     switch (Capacitor.getPlatform()) {
-      case "android":
       case "ios":
-        alert("Not implemented")// TODO handle locally on app
+        alert("Not implemented")
+        break
+      case "android":
+        GoogleLoginPlugin.displayLogin({ client_id: "34455321601-k28pfh14jq1l3v7i5ilil79m8sk8mhco.apps.googleusercontent.com" }) // TODO get from server
         break
       case "web":
       default:
