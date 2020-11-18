@@ -23,7 +23,7 @@ android {
             /* */
         }
         debug {
-            storeFile file('C:\\Users\\ParkerMc\\.android\\debug.keystore')
+            storeFile file("C:/Users/ParkerMc/.android/debug.keystore")
             keyAlias 'androiddebugkey'
             storePassword 'android'
             keyPassword 'android'
