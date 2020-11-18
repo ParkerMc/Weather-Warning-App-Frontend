@@ -126,7 +126,7 @@ class Home extends Component {
         <form onSubmit={this.handleSubmit.bind(this)} className={styles.Bottom}>
           {(error !== undefined) &&
             <div className={styles.ErrorBox}>
-              {(typeof error == "string") ? error : error.response.data.message}
+              {(typeof error == "string") ? error : (error.response !== undefined) ? error.response.data.message : ""}
             </div>}
           <div className={styles.SubBottom}>
             <label className={styles.Label}>

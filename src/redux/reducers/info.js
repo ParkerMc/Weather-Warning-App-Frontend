@@ -21,7 +21,6 @@ export default function reducer(state = initial_state, action) {
                 error: action.payload
             }
         case "INFO_FULFILLED":
-            console.log(action.payload)
             return {
                 ...state,
                 googleAPIKey: action.payload.googleAPIKey,
