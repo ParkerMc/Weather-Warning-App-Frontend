@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore } from "redux"
 import { persistStore } from "redux-persist"
-import { Plugins } from '@capacitor/core';
+import { Capacitor, Plugins } from '@capacitor/core';
 
 import thunk from "redux-thunk"
 
@@ -27,8 +27,17 @@ export const store = createStore(reducer, middleware)
 export const persistor = persistStore(store)
 
 const { GoogleLoginPlugin } = Plugins;
-GoogleLoginPlugin.addListener("redux", (data) => {
-    store.dispatch(data)
-})
+switch (Capacitor.getPlatform()) {
+    case "ios":
+        alert("Not implemented")
+        break
+    case "android":
+        GoogleLoginPlugin.addListener("redux", (data) => {
+            store.dispatch(data)
+        })
+        break
+    case "web":
+    default:
+}
 
 

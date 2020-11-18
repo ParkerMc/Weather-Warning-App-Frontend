@@ -1,6 +1,11 @@
+import { Capacitor, Plugins } from '@capacitor/core';
+
 import axios from "axios"
 import qs from "qs"
+
 import settings from "../../settings"
+
+const { GoogleLoginPlugin } = Plugins;
 
 export function checkLogin(username, token) {
     return (dispatch) => {
@@ -35,6 +40,20 @@ export function getUserInfo(username, token) {
             .catch((err) => {
                 dispatch({ type: "USER_INFO_REJECTED", payload: err })
             })
+    }
+}
+
+export function gotoGoogleLogin(google_login_url, serverGoogleClientID) {
+    switch (Capacitor.getPlatform()) {
+        case "ios":
+            alert("Not implemented")
+            break
+        case "android":
+            GoogleLoginPlugin.displayLogin({ client_id: serverGoogleClientID })
+            break
+        case "web":
+        default:
+            window.location.href = google_login_url
     }
 }
 

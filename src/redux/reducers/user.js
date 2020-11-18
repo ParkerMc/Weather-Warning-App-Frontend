@@ -1,12 +1,13 @@
 import Cookies from "universal-cookie";
 
 import { getInfo } from "../actions/info"
-import { checkLogin, processGoogleLogin, redirectToGoogleLogin } from "../actions/user"
+import { checkLogin, processGoogleLogin, redirectToGoogleLogin, gotoGoogleLogin } from "../actions/user"
 
 const cookies = new Cookies();
 
 let initial_state = {
     google_login_url: undefined,
+    serverGoogleClientID: undefined,
     loggedin: false,
     loggedin_check: false,
     loggedin_loading: false,
@@ -35,7 +36,8 @@ export default function reducer(state = initial_state, action) {
             return {
                 ...state,
                 redirect_google: false,
-                google_login_url: action.payload.googleLoginUrl
+                google_login_url: action.payload.googleLoginUrl,
+                serverGoogleClientID: action.payload.serverGoogleClientID,
             }
         case "LOAD_COOKIES":
             let username = cookies.get("username");
@@ -51,7 +53,7 @@ export default function reducer(state = initial_state, action) {
                 username,
                 token
             }
-        case "START_GOOGLE_LOGIN":  // Will be sent from android
+        case "START_GOOGLE_LOGIN":  // Will be sent from android or iOS
             action.dispatch(processGoogleLogin(action.payload))
             break
         case "LOGGEDIN_PENDING":
@@ -118,14 +120,14 @@ export default function reducer(state = initial_state, action) {
                 username: undefined
             }
         case "REDIRECT_GOOGLE_LOGIN":
-            if (state.google_login_url === undefined) {
+            if (state.google_login_url === undefined || state.serverGoogleClientID === undefined) {
                 action.dispatch(getInfo())
                 return {
                     ...state,
                     redirect_google: true
                 }
             }
-            window.location.href = state.google_login_url
+            action.dispatch(gotoGoogleLogin(state.google_login_url, state.serverGoogleClientID))
             break
 
         case "USER_INFO_PENDING":
