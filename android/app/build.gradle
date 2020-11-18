@@ -23,10 +23,12 @@ android {
             /* */
         }
         debug {
-            storeFile file("C:/Users/ParkerMc/.android/debug.keystore")
+            /* // Uncomment to enable signing of debug configs
+            storeFile file('C:\\Users\\ParkerMc\\.android\\debug.keystore')
             keyAlias 'androiddebugkey'
             storePassword 'android'
             keyPassword 'android'
+            /* */
         }
     }
 
