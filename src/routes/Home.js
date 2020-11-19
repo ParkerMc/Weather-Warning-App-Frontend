@@ -151,9 +151,9 @@ class Home extends Component {
             }
             {(!create_account) &&
               <div className={styles.SubSubBottom}>
-                <Button className={styles.BottomButton} submit>Log In</Button>
-                <div className={styles.BottomMidButtonSpacer}></div>
                 <Button className={styles.BottomButton} onClick={this.createAccountSawp.bind(this)}>Sign up</Button>
+                <div className={styles.BottomMidButtonSpacer}></div>
+                <Button className={styles.BottomButton} submit>Log In</Button>
               </div>
             }
             {(!create_account) &&

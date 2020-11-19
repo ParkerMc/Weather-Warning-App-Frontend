@@ -8,7 +8,8 @@ export default class ToggleButton extends Component {
         dark: PropTypes.bool,
         style: PropTypes.object,
         active: PropTypes.bool,
-        onToggle: PropTypes.func
+        onToggle: PropTypes.func,
+        id: PropTypes.string
     }
 
     constructor(props) {
@@ -18,12 +19,12 @@ export default class ToggleButton extends Component {
     }
 
     toggleButton(e) {
-        const { onToggle } = this.props
+        const { onToggle, id } = this.props
         const { active } = this.state
         e.target.blur()
         this.setState({ active: !active })
         if (onToggle !== undefined) {
-            onToggle(!active)
+            onToggle({ id, active: !active })
         }
     }
 

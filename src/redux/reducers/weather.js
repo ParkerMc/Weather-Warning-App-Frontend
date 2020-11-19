@@ -35,7 +35,6 @@ export default function reducer(state = initial_state, action) {
 
                 }
             }
-
         case "STATION_OBSERVATIONS_PENDING":
             return {
                 ...state,

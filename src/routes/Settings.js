@@ -53,11 +53,11 @@ class Settings extends Component {
   }
 
   onDarkModeToggle(val) {
-    this.props.dispatch(changeSettings({ dark_mode: val }))
+    this.props.dispatch(changeSettings({ dark_mode: val.active }))
   }
 
   onGPSToggle(val) {
-    this.props.dispatch(changeSettings({ use_gps: val }))
+    this.props.dispatch(changeSettings({ use_gps: val.active }))
   }
 
   onLocationChanged(val) {
@@ -68,7 +68,7 @@ class Settings extends Component {
     const { locations_enabled } = this.props
     const { currentLocation } = this.state
     var newVal = [...locations_enabled]
-    newVal[currentLocation] = val
+    newVal[currentLocation] = val.active
     this.props.dispatch(changeSettings({ locations_enabled: newVal }))
   }
 
@@ -77,19 +77,19 @@ class Settings extends Component {
   }
 
   onPushToggled(val) {
-    this.props.dispatch(changeSettings({ push_enabled: val }))
+    this.props.dispatch(changeSettings({ push_enabled: val.active }))
   }
 
   onEmailToggled(val) {
-    this.props.dispatch(changeSettings({ email_enabled: val }))
+    this.props.dispatch(changeSettings({ email_enabled: val.active }))
   }
 
   onWarningsToggled(val) {
-    this.props.dispatch(changeSettings({ warnings_enabled: val }))
+    this.props.dispatch(changeSettings({ warnings_enabled: val.active }))
   }
 
   onTempToggle(val) {
-    this.props.dispatch(changeSettings({ temperature_enabled: val }))
+    this.props.dispatch(changeSettings({ temperature_enabled: val.active }))
   }
 
   onTempChange(val) {
@@ -97,7 +97,7 @@ class Settings extends Component {
   }
 
   onPressureToggle(val) {
-    this.props.dispatch(changeSettings({ pressure_enabled: val }))
+    this.props.dispatch(changeSettings({ pressure_enabled: val.active }))
   }
 
   onPressureChange(val) {
@@ -105,7 +105,7 @@ class Settings extends Component {
   }
 
   onHumidityToggle(val) {
-    this.props.dispatch(changeSettings({ humidity_enabled: val }))
+    this.props.dispatch(changeSettings({ humidity_enabled: val.active }))
   }
 
   onHumidityChange(val) {
@@ -113,7 +113,7 @@ class Settings extends Component {
   }
 
   onWindspeedToggle(val) {
-    this.props.dispatch(changeSettings({ wind_enabled: val }))
+    this.props.dispatch(changeSettings({ wind_enabled: val.active }))
   }
 
   onWindspeedChange(val) {
@@ -121,7 +121,7 @@ class Settings extends Component {
   }
 
   onRainToggle(val) {
-    this.props.dispatch(changeSettings({ rain_enabled: val }))
+    this.props.dispatch(changeSettings({ rain_enabled: val.active }))
   }
 
   onRainChange(val) {

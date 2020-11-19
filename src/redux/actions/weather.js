@@ -25,4 +25,17 @@ export function getForecast(forecastOffice, zoneX, zoneY) {
                 dispatch({ type: "FORECAST_REJECTED", payload: err })
             })
     }
-} 
+}
+
+export function getAlerts() {
+    return (dispatch) => {
+        dispatch({ type: "ALERTS_PENDING" })
+        axios.get("https://api.weather.gov/alerts/active")
+            .then((responce) => {
+                dispatch({ type: "ALERTS_FULFILLED", payload: responce.data })
+            })
+            .catch((err) => {
+                dispatch({ type: "ALERTS_REJECTED", payload: err })
+            })
+    }
+}

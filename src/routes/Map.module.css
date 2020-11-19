@@ -3,12 +3,20 @@
     flex-direction: column;
 }
 
-.Headder{
-    margin: 20px 20px 10px 20px;
-}
-
 .Map,
 .FakeMap{
     flex: 1 1 0px;
-    margin: 10px 0 10px 0;
+    margin: 0 0 10px 0;
+}
+
+.ButtonBox{
+    display: flex;
+    justify-content: space-around;
+    margin: 0 0 10px 0;
+}
+
+.FakeButton{
+    width: 115px;
+    height: 45px;
+    flex: 0 0 115px;
 }
