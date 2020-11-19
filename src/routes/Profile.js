@@ -60,9 +60,7 @@ class Profile extends Component {
     if (!loggedin_check && !loggedin_loading) {
       this.props.dispatch(loadCookies())
     }
-    if (username !== undefined && token !== undefined) {
-      this.props.dispatch(getUserInfo(username, token))
-    }
+    this.props.dispatch(getUserInfo(username, token))
   }
 
   onTextChange(e) {
@@ -112,11 +110,8 @@ class Profile extends Component {
   }
 
   componentDidUpdate() {
-    const { name, email, phone_number, info_loading, username, token, update_error } = this.props
+    const { name, email, phone_number, update_error } = this.props
     const { nameChanged, emailChanged, phoneNumberChanged, lastError } = this.state
-    if (!info_loading && (name === undefined || email === undefined || phone_number === undefined) && username !== undefined && token !== undefined) {
-      this.props.dispatch(getUserInfo(username, token)) // TODO change to a better way
-    }
     if (!nameChanged && name !== undefined && name !== this.state.name) {
       this.setState({ name })
     }

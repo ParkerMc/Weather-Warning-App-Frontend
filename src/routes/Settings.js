@@ -6,6 +6,7 @@ import { changeSettings } from "../redux/actions/settings"
 import { loadCookies } from "../redux/actions/user"
 
 import BackButton from "../components/BackButton"
+import Button from "../components/Button"
 import ToggleButton from "../components/ToggleButton"
 import ScrollButton from "../components/ScrollButton"
 import Page from "../components/Page"
@@ -128,6 +129,10 @@ class Settings extends Component {
     this.props.dispatch(changeSettings({ rain_change: val + 1 }))
   }
 
+  onProfileClick(e) {
+    this.props.history.push("/profile")
+  }
+
   onBackButtonClicked(e) {
     this.props.history.push("/current")
   }
@@ -202,6 +207,9 @@ class Settings extends Component {
         <div className={styles.Row}>
           <p className={styles.SettingLabel}>Dark Mode</p>
           <ToggleButton dark={dark_mode} active={dark_mode} onToggle={this.onDarkModeToggle.bind(this)} />
+        </div>
+        <div className={styles.Row}>
+          <Button dark={dark_mode} onClick={this.onProfileClick.bind(this)}>Profile</Button>
         </div>
         <BackButton dark={dark_mode} onClick={this.onBackButtonClicked.bind(this)} />
       </Page>

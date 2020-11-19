@@ -52,7 +52,7 @@ export default function reducer(state = initial_state, action) {
                 advisories,
                 warnings,
                 watches,
-                alerts_loading: true
+                alerts_loading: false
             }
         default:
             break

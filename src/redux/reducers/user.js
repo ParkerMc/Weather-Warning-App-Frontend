@@ -1,7 +1,7 @@
 import Cookies from "universal-cookie";
 
 import { getInfo } from "../actions/info"
-import { checkLogin, processGoogleLogin, redirectToGoogleLogin, gotoGoogleLogin } from "../actions/user"
+import { checkLogin, processGoogleLogin, redirectToGoogleLogin, gotoGoogleLogin, getUserInfo } from "../actions/user"
 
 const cookies = new Cookies();
 
@@ -22,7 +22,8 @@ let initial_state = {
     phone_number: undefined,
     info_loading: false,
     update_error: undefined,
-    show_update_saved: false
+    show_update_saved: false,
+    should_load_user_info: false
 }
 
 export default function reducer(state = initial_state, action) {
@@ -74,12 +75,18 @@ export default function reducer(state = initial_state, action) {
                 cookies.remove("username");
                 cookies.remove("token");
                 action.dispatch({ type: "LOGOUT" })
+            } else {
+                if (state.should_load_user_info) {
+                    console.log("AAAA")
+                    action.dispatch(getUserInfo(state.username, state.token))
+                }
             }
             return {
                 ...state,
                 loggedin: action.payload.loggedin,
                 loggedin_check: true,
-                loggedin_loading: false
+                loggedin_loading: false,
+                should_load_user_info: false
             }
         case "LOGIN_PENDING":
             return {
@@ -129,11 +136,16 @@ export default function reducer(state = initial_state, action) {
             }
             action.dispatch(gotoGoogleLogin(state.google_login_url, state.serverGoogleClientID))
             break
-
+        case "FUTURE_USER_INFO":
+            return {
+                ...state,
+                should_load_user_info: true
+            }
         case "USER_INFO_PENDING":
             return {
                 ...state,
-                info_loading: true
+                info_loading: true,
+                should_load_user_info: false
             }
         case "USER_INFO_REJECTED":
             if (action.payload.response.status === 401) {
@@ -141,7 +153,7 @@ export default function reducer(state = initial_state, action) {
             }
             return {
                 ...state,
-                info_loading: true, // TODO maybe change is here now to prevent api overload
+                info_loading: false,
                 error: action.payload
             }
         case "USER_INFO_FULFILLED":
@@ -163,7 +175,7 @@ export default function reducer(state = initial_state, action) {
             }
             return {
                 ...state,
-                info_loading: true, // TODO maybe change is here now to prevent api overload
+                info_loading: false,
                 error: action.payload
             }
         case "UPDATE_USER_INFO_FULFILLED":

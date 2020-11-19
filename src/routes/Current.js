@@ -36,8 +36,8 @@ class Current extends Component {
     }
   }
 
-  onProfileClick(e) {
-    this.props.history.push("/profile")
+  onMapClick(e) {
+    this.props.history.push("/map")
   }
 
   onNotificationsClick(e) {
@@ -71,7 +71,7 @@ class Current extends Component {
         <p className={styles.TealText}>Wind Speed: {this.propOrDefault(current_station.wind_speed, 0)} km/h</p>
         <p className={styles.DarkGrayText}>Chance of Rain: {this.propOrDefault(current_forecast.rain_chance, 0)}%</p>
         <div className={styles.ButtonBox}>
-          <Button dark={dark_mode} onClick={this.onProfileClick.bind(this)}>Profile</Button>
+          <Button dark={dark_mode} onClick={this.onMapClick.bind(this)}>Map</Button>
           <Button dark={dark_mode} onClick={this.onNotificationsClick.bind(this)}>Notifications</Button>
           <Button dark={dark_mode} onClick={this.onSettingsClick.bind(this)}>Settings</Button>
         </div>

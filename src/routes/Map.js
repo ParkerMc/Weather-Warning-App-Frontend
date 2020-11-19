@@ -14,6 +14,8 @@ import { loadCookies } from "../redux/actions/user"
 import styles from "./Map.module.css"
 import Button from "../components/Button";
 
+const updateMins = 5
+
 function mapStateToProps(store, ownProps) {
   return {
     dark_mode: store.settings.dark_mode,
@@ -34,6 +36,7 @@ class Map extends Component { // TODO add location markers and current location
       advisories_visiable: true,
       warnings_visiable: true,
       watches_visiable: true,
+      interval: undefined,
       map: undefined,
       infoWindow: undefined,
       cetner: {
@@ -43,16 +46,28 @@ class Map extends Component { // TODO add location markers and current location
       zoom: 3
     }
   }
+
   componentDidMount() {
-    const { loggedin_check, loggedin_loading, googleAPIKey, info_loading, advisories, alerts_loading } = this.props
-    if (advisories === undefined && !alerts_loading) { // TODO update baised on time
-      this.props.dispatch(getAlerts())
-    }
+    const { loggedin_check, loggedin_loading, googleAPIKey, info_loading } = this.props
+    this.props.dispatch(getAlerts())
+    this.setState({
+      interval: setInterval(() => {
+        this.props.dispatch(getAlerts())
+      }, updateMins * 60000)
+    })
     if (googleAPIKey === undefined && !info_loading) {
       this.props.dispatch(getInfo())
     }
     if (!loggedin_check && !loggedin_loading) {
       this.props.dispatch(loadCookies())
+    }
+  }
+
+  componentWillUnmount() {
+    const { interval } = this.state
+    if (interval !== undefined) {
+      clearInterval(interval)
+      this.setState({ interval: undefined })
     }
   }
 

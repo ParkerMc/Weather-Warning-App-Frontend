@@ -27,6 +27,10 @@ export function checkLogin(username, token) {
 
 export function getUserInfo(username, token) {
     return (dispatch) => {
+        if (username === undefined || token === undefined) {
+            dispatch({ type: "FUTURE_USER_INFO" })
+            return
+        }
         dispatch({ type: "USER_INFO_PENDING" })
         axios.get(settings.api_url + "/user", {
             headers: {
