@@ -9,7 +9,7 @@
 }
 
 .LocationText {
-    margin: 0 50px 0 50px;
+    margin: 0 50px 10px 50px;
 
     font-family: Montserrat;
     font-style: normal;
@@ -23,7 +23,7 @@
 
 .TealText,
 .DarkGrayText{
-    margin: 0 50px 0 50px;
+    margin: 5px 50px 5px 50px;
 
     font-family: Montserrat;
     font-style: normal;

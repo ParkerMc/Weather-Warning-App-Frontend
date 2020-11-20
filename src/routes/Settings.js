@@ -143,6 +143,8 @@ class Settings extends Component {
       wind_enabled, windspeed_change, rain_enabled, rain_change, dark_mode,
       loggedin, loggedin_loading, loggedin_check } = this.props
     const { currentLocation } = this.state
+    // TODO add location to show on current weather
+    // TODO add imerial or metric setting
     return (
       <Page className={`${styles.Page} ${dark_mode && styles.Dark}`} dark={dark_mode}>
         {!loggedin && !loggedin_loading && loggedin_check && <Redirect to="/" />}  {/* Redirects user if they are not logged in */}

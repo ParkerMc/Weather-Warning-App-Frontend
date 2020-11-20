@@ -1,5 +1,7 @@
 
 let initial_state = {
+    use_metric: false,
+
     use_gps: false,
     time_interval: 15,
     locations_enabled: [false, false, false],

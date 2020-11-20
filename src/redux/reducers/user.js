@@ -77,7 +77,6 @@ export default function reducer(state = initial_state, action) {
                 action.dispatch({ type: "LOGOUT" })
             } else {
                 if (state.should_load_user_info) {
-                    console.log("AAAA")
                     action.dispatch(getUserInfo(state.username, state.token))
                 }
             }
