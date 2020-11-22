@@ -34,7 +34,7 @@ export default function reducer(state = initial_state, action) {
             break
 
         case "SETTING_LOCATION_GOOD":
-            action.dispatch(startSaveTimeout(action.store.user.username, action.store.user.token, newState.darkMode, newState.useGPS, newState.useMetric, newState.mainLocation))
+            action.dispatch(startSaveTimeout(action.store.user.username, action.store.user.token, state.darkMode, state.useGPS, state.useMetric, state.mainLocation))
             break
 
         case "SETTING_LOCATION_BAD":
