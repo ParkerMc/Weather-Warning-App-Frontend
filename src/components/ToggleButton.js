@@ -15,7 +15,10 @@ export default class ToggleButton extends Component {
     constructor(props) {
         super()
         const { active } = props
-        this.state = { active }
+        this.state = {
+            active,
+            propActive: active
+        }
     }
 
     toggleButton(e) {
@@ -24,7 +27,18 @@ export default class ToggleButton extends Component {
         e.target.blur()
         this.setState({ active: !active })
         if (onToggle !== undefined) {
-            onToggle({ id, active: !active })
+            onToggle({ id, val: !active })
+        }
+    }
+
+    componentDidUpdate() {
+        const { propActive } = this.state
+        const { active } = this.props
+        if (propActive !== active) {
+            this.setState({
+                active,
+                propActive: active
+            })
         }
     }
 

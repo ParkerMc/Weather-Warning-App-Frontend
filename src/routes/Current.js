@@ -15,7 +15,7 @@ const updateMins = 5
 
 function mapStateToProps(store, ownProps) {
   return {
-    dark_mode: store.settings.dark_mode,
+    darkMode: store.settings.darkMode,
     current_weather: store.weather.current_weather,
     current_loading: store.weather.current_loading,
     loggedin: store.user.loggedin,
@@ -82,7 +82,7 @@ class Current extends Component {
   }
 
   render() {
-    const { dark_mode, loggedin, loggedin_loading, loggedin_check, current_weather, current_loading, use_metric } = this.props
+    const { darkMode, loggedin, loggedin_loading, loggedin_check, current_weather, current_loading, use_metric } = this.props
     let temp = this.propOrDefault(current_weather.temp, 0)
     let high = this.propOrDefault(current_weather.high, 0)
     let low = this.propOrDefault(current_weather.low, 0)
@@ -104,7 +104,7 @@ class Current extends Component {
       windSpeed = windSpeed * 0.62137119223
     }
     return (
-      <Page className={styles.Page} dark={dark_mode}>
+      <Page className={styles.Page} dark={darkMode}>
         {!loggedin && !loggedin_loading && loggedin_check && <Redirect to="/" />}  {/* Redirects user if they are not logged in */}
         <h2 className={styles.Headder}>Current Weather</h2>
         <p className={styles.LocationText}>Location: <br />{(current_loading) ? "Loading" : this.propOrDefault(current_weather.locationName, "")}</p>
@@ -116,9 +116,9 @@ class Current extends Component {
         <p className={styles.TealText}>Wind Speed: {windSpeed.toFixed(2)} {(use_metric) ? "km/h" : "mph"}</p>
         <p className={styles.DarkGrayText}>Chance of Rain: {rainProbability}%</p>
         <div className={styles.ButtonBox}>
-          <Button dark={dark_mode} onClick={this.onMapClick.bind(this)}>Map</Button>
-          <Button dark={dark_mode} onClick={this.onNotificationsClick.bind(this)}>Notifications</Button>
-          <Button dark={dark_mode} onClick={this.onSettingsClick.bind(this)}>Settings</Button>
+          <Button dark={darkMode} onClick={this.onMapClick.bind(this)}>Map</Button>
+          <Button dark={darkMode} onClick={this.onNotificationsClick.bind(this)}>Notifications</Button>
+          <Button dark={darkMode} onClick={this.onSettingsClick.bind(this)}>Settings</Button>
         </div>
       </Page>
     )

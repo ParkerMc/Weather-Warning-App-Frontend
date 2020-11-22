@@ -1,22 +1,17 @@
 .Page {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .Headder{
     margin: 20px 20px 10px 20px;
 }
 
-.Row,
-.NotificationRow
-{
-    display: flex;
-    margin: 10px 20px 10px 20px;
-}
-
 .Row{
+    display: flex;
     flex-direction: row;
+    margin: 15px 20px 15px 20px;
 }
 
 .SettingLabel{
@@ -27,7 +22,7 @@
     font-family: Montserrat;
     font-style: normal;
     font-weight: 300;
-    font-size: 36px;
+    font-size: 35px;
 
     /* Black */
     color: #272727;
@@ -38,11 +33,63 @@
     color: #FFFEF9;
 }
 
+.Spacer{
+    flex: 1 1 0px;
+}
 
+.BottomRow{
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 15px 0;
+}
+
+.BottomButton{
+    flex: 1 1 0px;
+    margin: 0 10px 0 10px;
+}
+
+.ErrorBox,
+.SavedBox,
+.FakeBox{
+    display: flex;
+    align-self: center;
+    flux: 0 0 1em;
+    width: 280px;
+    padding: 10px 0 10px 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    align-self: center;
+    text-align: center;
+  
+    /* Black */
+    color: #171717;
+    
+}
+
+.ErrorBox{
+    background-color: #f44336;
+}
+
+.SavedBox{
+    background-color: #4CAF50;
+}
+
+.FakeBox{
+    color: rgba(0, 0, 0, 0);
+}
+
+/*
 .SettingMultiLabel {
     display: flex;
     flex-direction: column;
 }
+
 
 .SettingDescription{
     margin: 0 0 0 10px;
@@ -59,6 +106,7 @@
     font-size: 18px;
     color: #727272;
 }
+
 
 .Dark .SettingDescription{
     color: #BBBBBB;
@@ -80,3 +128,4 @@
     font-weight: 700;
     color: #095F6B;
 }
+*/

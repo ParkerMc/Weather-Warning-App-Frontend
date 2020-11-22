@@ -7,7 +7,7 @@ import { processGoogleLogin } from "../redux/actions/user"
 
 function mapStateToProps(store, ownProps) {
   return {
-    dark_mode: store.settings.dark_mode,
+    darkMode: store.settings.darkMode,
   }
 }
 
@@ -40,9 +40,9 @@ class GoogleCallback extends Component {
   }
 
   render() {
-    const { dark_mode } = this.props
+    const { darkMode } = this.props
     return (
-      <Page className={styles.Page} dark={dark_mode}>
+      <Page className={styles.Page} dark={darkMode}>
       </Page>
     )
   }

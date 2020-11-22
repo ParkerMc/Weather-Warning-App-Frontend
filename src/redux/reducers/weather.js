@@ -10,6 +10,7 @@ export default function reducer(state = initial_state, action) {
         case "LOGOUT":
             return { ...initial_state }
         // TODO support storing current weather locations
+        // TODO make sure if it fails because user wasn't logged in it will try agagin
         case "CURRENT_WEATHER_PENDING":
             return {
                 ...state,

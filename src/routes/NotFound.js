@@ -7,15 +7,15 @@ import styles from "./NotFound.module.css"
 
 function mapStateToProps(store, ownProps) {
   return {
-    dark_mode: store.settings.dark_mode
+    darkMode: store.settings.darkMode
   }
 }
 
 class NotFound extends Component {
   render() {
-    const { dark_mode } = this.props
+    const { darkMode } = this.props
     return (
-      <Page className={styles.Main} dark={dark_mode}>
+      <Page className={styles.Main} dark={darkMode}>
         <h2>Error: 404<br />
         Page Not Found</h2>
       </Page>

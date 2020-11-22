@@ -18,7 +18,7 @@ const updateMins = 5
 
 function mapStateToProps(store, ownProps) {
   return {
-    dark_mode: store.settings.dark_mode,
+    darkMode: store.settings.darkMode,
     loggedin: store.user.loggedin,
     loggedin_check: store.user.loggedin_check,
     loggedin_loading: store.user.loggedin_loading,
@@ -84,7 +84,7 @@ class Map extends Component { // TODO add location markers and current location
   }
 
   onToggleButton(e) {
-    this.setState({ [e.id + "_visiable"]: e.active })
+    this.setState({ [e.id + "_visiable"]: e.val })
   }
 
   generatePolyClickCallback(alert) {
@@ -103,7 +103,7 @@ class Map extends Component { // TODO add location markers and current location
   }
 
   render() {
-    const { dark_mode, loggedin, loggedin_loading, loggedin_check, googleAPIKey, warnings, watches, advisories } = this.props
+    const { darkMode, loggedin, loggedin_loading, loggedin_check, googleAPIKey, warnings, watches, advisories } = this.props
     const { cetner, zoom, infoWindow, advisories_visiable, warnings_visiable, watches_visiable } = this.state
     let polyWarnings;
     if (warnings !== undefined) {
@@ -145,7 +145,7 @@ class Map extends Component { // TODO add location markers and current location
       })
     }
     return (
-      <Page className={styles.Page} dark={dark_mode}>
+      <Page className={styles.Page} dark={darkMode}>
         {!loggedin && !loggedin_loading && loggedin_check && <Redirect to="/" />}  {/* Redirects user if they are not logged in */}
         {(googleAPIKey !== undefined) &&
           <LoadScript
@@ -190,7 +190,7 @@ class Map extends Component { // TODO add location markers and current location
           <div className={styles.FakeButton}></div>
           <div className={styles.FakeButton}></div>
         </div>
-        <BackButton dark={dark_mode} onClick={this.onBackButtonClicked.bind(this)} />
+        <BackButton dark={darkMode} onClick={this.onBackButtonClicked.bind(this)} />
       </Page >
     )
   }

@@ -16,7 +16,6 @@ const VALID_USERNAME_REGEX = /^[a-zA-Z0-9]+$/
 
 function mapStateToProps(store, ownProps) {
   return {
-    dark_mode: store.settings.dark_mode,
     google_login_url: store.user.google_login_url,
     info_loading: store.info.loading,
     loggedin: store.user.loggedin,
@@ -112,10 +111,10 @@ class Home extends Component {
   }
 
   render() {  // TODO forgot password
-    const { dark_mode, loggedin } = this.props
+    const { loggedin } = this.props
     const { create_account, error, username, password, email, confirm_password } = this.state
     return (
-      <Page className={styles.Page} dark={dark_mode}>
+      <Page className={styles.Page}>
         {loggedin && <Redirect to="/current" />}  {/* Redirects user if they are logged in */}
         <header className={styles.Top}>
           <h1 className={styles.Header}>

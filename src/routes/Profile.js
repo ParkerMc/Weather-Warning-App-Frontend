@@ -13,7 +13,7 @@ import styles from "./Profile.module.css"
 
 function mapStateToProps(store, ownProps) {
   return {
-    dark_mode: store.settings.dark_mode,
+    darkMode: store.settings.darkMode,
     loggedin: store.user.loggedin,
     loggedin_check: store.user.loggedin_check,
     loggedin_loading: store.user.loggedin_loading,
@@ -81,7 +81,7 @@ class Profile extends Component {
   }
 
   onBackButtonClicked(e) {
-    this.props.history.push("/current")
+    this.props.history.push("/settings")
   }
 
   handleSubmit(e) {
@@ -127,20 +127,20 @@ class Profile extends Component {
   }
 
   render() {
-    const { dark_mode, loggedin, loggedin_loading, loggedin_check, show_update_saved } = this.props
+    const { darkMode, loggedin, loggedin_loading, loggedin_check, show_update_saved } = this.props
     const { name, email, phoneNumber, password, confirm_password, error } = this.state
     return (
-      <Page className={styles.Page} dark={dark_mode}>
+      <Page className={styles.Page} dark={darkMode}>
         {!loggedin && !loggedin_loading && loggedin_check && <Redirect to="/" />}  {/* Redirects user if they are not logged in */}
         <h2 className={styles.Headder}>My Profile</h2>
-        <form onSubmit={this.handleSubmit.bind(this)} className={`${styles.FieldDiv} ${dark_mode && styles.Dark}`}>
+        <form onSubmit={this.handleSubmit.bind(this)} className={`${styles.FieldDiv} ${darkMode && styles.Dark}`}>
           {(error !== undefined) &&
             <div className={styles.ErrorBox}>
               {(typeof error == "string") ? error : error.response.data.message}
             </div>}
           {show_update_saved &&
             <div className={styles.SavedBox}>
-              Saved
+              Saved!
            </div>
           }
           <label className={styles.Label}>
@@ -164,11 +164,11 @@ class Profile extends Component {
             <TextInput password id="confirm_password" value={confirm_password} onChange={this.onTextChange.bind(this)} />
           </label>
           <div className={styles.ButtonBox}>
-            <Button dark={dark_mode} className={styles.Button} onClick={this.onLogoutClicked.bind(this)}>Logout</Button>
-            <Button dark={dark_mode} className={styles.Button} submit>Save</Button>
+            <Button dark={darkMode} className={styles.Button} onClick={this.onLogoutClicked.bind(this)}>Logout</Button>
+            <Button dark={darkMode} className={styles.Button} submit>Save</Button>
           </div>
         </form>
-        <BackButton dark={dark_mode} onClick={this.onBackButtonClicked.bind(this)} />
+        <BackButton dark={darkMode} onClick={this.onBackButtonClicked.bind(this)} />
       </Page >
     )
   }

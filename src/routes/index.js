@@ -20,12 +20,12 @@ export default class Router extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={Home} />
-                    <Route path="/current" component={Current} />
-                    <Route path="/google_callback" component={GoogleCallback} />
-                    <Route path="/map" component={Map} />
-                    <Route path="/profile" component={Profile} />
-                    <Route path="/settings" component={Settings} />
-                    <Route path="*" component={NotFound} />
+                    <Route exact path="/current" component={Current} />
+                    <Route exact path="/google_callback" component={GoogleCallback} />
+                    <Route exact path="/map" component={Map} />
+                    <Route exact path="/settings" component={Settings} />
+                    <Route exact path="/settings/profile" component={Profile} />
+                    <Route exact path="*" component={NotFound} />
                 </Switch>
             </BrowserRouter>
         )

@@ -12,7 +12,7 @@ const dispatchMiddleware = store => next => action => {
     function dispatch(action) {
         queue = [...queue, action]
     }
-    const actionWithQueue = { ...action, dispatch }
+    const actionWithQueue = { ...action, dispatch, store: store.getState() }
 
     const data = next(actionWithQueue)
 

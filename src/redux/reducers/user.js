@@ -103,6 +103,7 @@ export default function reducer(state = initial_state, action) {
             expiration.setUTCSeconds(action.payload.expiration)
             cookies.set("username", action.payload.username, { expires: expiration })
             cookies.set("token", action.payload.token, { expires: expiration })
+            action.dispatch({ payload: "LOGGEDIN_FULFILLED" })
             return {
                 ...state,
                 login_loading: false,
