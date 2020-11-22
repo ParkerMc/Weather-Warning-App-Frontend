@@ -11,8 +11,9 @@ import Home from "./Home"
 import NotFound from "./NotFound"
 import GoogleCallback from "./GoogleCallback"
 import Map from "./Map"
-import Profile from "./Profile"
 import Settings from "./Settings"
+
+import Profile from "./settings/Profile"
 
 export default class Router extends Component {
     render() {

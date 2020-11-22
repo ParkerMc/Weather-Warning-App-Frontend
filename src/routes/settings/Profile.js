@@ -2,12 +2,12 @@ import { Component } from "react"
 import { connect } from "react-redux"
 import { Redirect } from "react-router-dom"
 
-import BackButton from "../components/BackButton"
-import Button from "../components/Button"
-import Page from "../components/Page"
-import TextInput from "../components/TextInput"
+import BackButton from "../../components/BackButton"
+import Button from "../../components/Button"
+import Page from "../../components/Page"
+import TextInput from "../../components/TextInput"
 
-import { getUserInfo, loadCookies, logout, updateUserInfo } from "../redux/actions/user"
+import { getUserInfo, loadCookies, logout, updateUserInfo } from "../../redux/actions/user"
 
 import styles from "./Profile.module.css"
 
