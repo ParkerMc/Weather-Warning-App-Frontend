@@ -23,7 +23,7 @@ function mapStateToProps(store, ownProps) {
     loggedin_loading: store.user.loggedin_loading,
     username: store.user.username,
     token: store.user.token,
-    use_metric: store.settings.use_metric
+    useMetric: store.settings.useMetric
   }
 }
 
@@ -82,7 +82,7 @@ class Current extends Component {
   }
 
   render() {
-    const { darkMode, loggedin, loggedin_loading, loggedin_check, current_weather, current_loading, use_metric } = this.props
+    const { darkMode, loggedin, loggedin_loading, loggedin_check, current_weather, current_loading, useMetric } = this.props
     let temp = this.propOrDefault(current_weather.temp, 0)
     let high = this.propOrDefault(current_weather.high, 0)
     let low = this.propOrDefault(current_weather.low, 0)
@@ -90,7 +90,7 @@ class Current extends Component {
     let humidity = this.propOrDefault(current_weather.humidity, 0)
     let windSpeed = this.propOrDefault(current_weather.windSpeed, 0)
     let rainProbability = this.propOrDefault(current_weather.rainProbability, 0)
-    if (!use_metric) {
+    if (!useMetric) {
       if (current_weather.temp !== undefined) {
         temp = this.tempToImperial(temp)
       }
@@ -108,12 +108,12 @@ class Current extends Component {
         {!loggedin && !loggedin_loading && loggedin_check && <Redirect to="/" />}  {/* Redirects user if they are not logged in */}
         <h2 className={styles.Headder}>Current Weather</h2>
         <p className={styles.LocationText}>Location: <br />{(current_loading) ? "Loading" : this.propOrDefault(current_weather.locationName, "")}</p>
-        <p className={styles.DarkGrayText}>Current Temp: {temp.toFixed(1)} &deg;{(use_metric) ? "C" : "F"}</p>
-        <p className={styles.TealText}>Highest Temp: {high.toFixed(1)} &deg;{(use_metric) ? "C" : "F"}</p>
-        <p className={styles.TealText}>Lowest Temp: {low.toFixed(1)} &deg;{(use_metric) ? "C" : "F"}</p>
-        <p className={styles.DarkGrayText}>Pressure: {pressure} {(use_metric) ? "Pa" : "Hg\""}</p>
+        <p className={styles.DarkGrayText}>Current Temp: {temp.toFixed(1)} &deg;{(useMetric) ? "C" : "F"}</p>
+        <p className={styles.TealText}>Highest Temp: {high.toFixed(1)} &deg;{(useMetric) ? "C" : "F"}</p>
+        <p className={styles.TealText}>Lowest Temp: {low.toFixed(1)} &deg;{(useMetric) ? "C" : "F"}</p>
+        <p className={styles.DarkGrayText}>Pressure: {pressure} {(useMetric) ? "Pa" : "Hg\""}</p>
         <p className={styles.DarkGrayText}>Humidity: {humidity.toFixed(2)}%</p>
-        <p className={styles.TealText}>Wind Speed: {windSpeed.toFixed(2)} {(use_metric) ? "km/h" : "mph"}</p>
+        <p className={styles.TealText}>Wind Speed: {windSpeed.toFixed(2)} {(useMetric) ? "km/h" : "mph"}</p>
         <p className={styles.DarkGrayText}>Chance of Rain: {rainProbability}%</p>
         <div className={styles.ButtonBox}>
           <Button dark={darkMode} onClick={this.onMapClick.bind(this)}>Map</Button>

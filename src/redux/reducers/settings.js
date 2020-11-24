@@ -2,7 +2,6 @@ import { getSettings, checkLocationPermission, startSaveTimeout } from "../actio
 import { checkLogin } from "../actions/user"
 
 let initial_state = {
-    use_metric: false,
     darkMode: false,
     useGPS: true,
     useMetric: false,
@@ -29,6 +28,7 @@ export default function reducer(state = initial_state, action) {
                 locationPermissionMsg: false
             }
 
+        case "POST_LOGIN":
         case "LOGGEDIN_FULFILLED":
             action.dispatch(getSettings(action.store.user.username, action.store.user.token))
             break
