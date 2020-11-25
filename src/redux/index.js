@@ -6,6 +6,17 @@ import thunk from "redux-thunk"
 
 import reducer from "./reducers"
 
+const errorMiddleware = store => next => action => {
+    try {
+        return next(action)
+    } catch (err) {
+        console.error(err)
+        console.debug("current state", store.getState());
+        console.debug("last action was", action);
+        return err
+    }
+}
+
 const dispatchMiddleware = store => next => action => {
     let queue = [];
 
@@ -21,7 +32,7 @@ const dispatchMiddleware = store => next => action => {
     return data
 }
 
-const middleware = applyMiddleware(thunk, dispatchMiddleware)
+const middleware = applyMiddleware(errorMiddleware, thunk, dispatchMiddleware)
 
 export const store = createStore(reducer, middleware)
 export const persistor = persistStore(store)
