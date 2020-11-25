@@ -15,8 +15,7 @@ export function checkLocationPermission(doGoodCallback) {
         if (navigator.geolocation) {// TODO maybe different on mobile
             navigator.geolocation.getCurrentPosition(
                 (e) => { if (doGoodCallback) dispatch({ type: "SETTING_LOCATION_GOOD" }) },
-                (e) => { dispatch({ type: "SETTING_LOCATION_BAD" }) },
-                { enableHighAccuracy: true });
+                (e) => { dispatch({ type: "SETTING_LOCATION_BAD" }) });
         } else {
             dispatch({ type: "SETTING_LOCATION_BAD" })
         }

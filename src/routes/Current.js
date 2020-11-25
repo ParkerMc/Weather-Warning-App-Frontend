@@ -6,6 +6,7 @@ import Button from "../components/Button"
 import Page from "../components/Page"
 
 
+import { getCurrentLocation } from "../redux/actions/locations"
 import { loadCookies } from "../redux/actions/user"
 import { getCurrentWeather } from "../redux/actions/weather"
 
@@ -23,7 +24,8 @@ function mapStateToProps(store, ownProps) {
     loggedin_loading: store.user.loggedin_loading,
     username: store.user.username,
     token: store.user.token,
-    useMetric: store.settings.useMetric
+    useMetric: store.settings.useMetric,
+    useGPS: store.settings.useGPS
   }
 }
 
@@ -35,12 +37,21 @@ class Current extends Component {
     }
   }
   componentDidMount() {
-    const { loggedin_check, loggedin_loading, username, token, current_loading } = this.props
-    this.props.dispatch(getCurrentWeather(username, token, 32.978313, -96.748451))// TODO make sure user is logged in
+    const { loggedin_check, loggedin_loading, username, token, current_loading, useGPS } = this.props
+    if (useGPS) {
+      // TODO don't get if currently trying to get location
+      this.props.dispatch(getCurrentLocation())
+    } else {
+      this.props.dispatch(getCurrentWeather(username, token, 32.978313, -96.748451))// TODO make sure user is logged in
+    }
     this.setState({
       interval: setInterval(() => {
         if (!current_loading) {
-          this.props.dispatch(getCurrentWeather(username, token, 32.978313, -96.748451))
+          if (useGPS) {
+            this.props.dispatch(getCurrentLocation())
+          } else {
+            this.props.dispatch(getCurrentWeather(username, token, 32.978313, -96.748451))// TODO make sure user is logged in
+          }
         }
       }, updateMins * 60000)
     })
